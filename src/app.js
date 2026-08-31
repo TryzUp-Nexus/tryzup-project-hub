@@ -7,7 +7,7 @@ import { formatDate, sortByDateDescending } from "./utils/dates.js";
 
 const byId = (id) => document.getElementById(id);
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
-const roadmap = ["Fundación y repositorio","Modelo de datos","Dashboard","Project Cards","Estados, prioridades y progreso","Búsqueda y filtros","Roadmap / timeline","Actividad reciente","Responsive y accesibilidad","GitHub Pages","GitHub Actions","GitHub API","Modularización reutilizable","v1.0.0 estable"];
+const roadmap = ["Fundación y repositorio","Modelo de datos projects.json","Dashboard base","Project Cards","Estados, prioridades y progreso","Búsqueda y filtros","Roadmap / timeline","Actividad reciente","Responsive y accesibilidad","GitHub Pages","GitHub Actions","GitHub API","Modularización reutilizable","v1.0.0 estable"];
 
 function renderStats(projects, learning) {
   const stats = calculateStats(projects, learning);
@@ -26,13 +26,20 @@ function renderProjects(projects) {
 }
 
 function renderRoadmap() {
+  const details = [
+    "Estructura base, repositorio, identidad visual y publicación inicial.",
+    "Definir contrato profesional, campos, validación y metodología de progreso.",
+    "Consolidar resumen, métricas y composición del panel principal.",
+    "Refinar tarjetas reutilizables alimentadas desde projects.json."
+  ];
+
   byId("roadmap-list").innerHTML = roadmap.slice(0, 4).map((phase, index) => {
     const number = index + 1;
+    const phaseLabel = String(number).padStart(2, "0");
     const state = number === 1 ? "is-complete" : number === 2 ? "is-current" : "";
     const status = number === 1 ? "Completa" : number === 2 ? "Próxima" : "Pendiente";
-    const quarters = ["Q2 2025", "Q3 2025", "Q4 2025", "Q1 2026"];
-    const details = ["Estructura base, identidad y sistemas principales.", "Desarrollo de plataformas, MVPs y validaciones.", "Integraciones, comunidad y lanzamiento público.", "Optimización, automatización y nuevas líneas."];
-    return `<article class="roadmap-item ${state}"><span class="roadmap-dot" aria-hidden="true"></span><div><strong><em>${quarters[index]}</em><span>•</span> Fase ${number}: ${phase}</strong><p>${details[index]}</p></div><span class="phase-status">${status}</span></article>`;
+
+    return `<article class="roadmap-item ${state}"><span class="roadmap-dot" aria-hidden="true"></span><div><strong><em>FASE ${phaseLabel}</em><span>•</span> ${phase}</strong><p>${details[index]}</p></div><span class="phase-status">${status}</span></article>`;
   }).join("");
 }
 
