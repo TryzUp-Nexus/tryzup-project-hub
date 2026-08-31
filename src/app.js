@@ -1,5 +1,5 @@
 import { getProjects, getLearning, calculateStats } from "./services/projectService.js";
-import { StatCard } from "./components/StatCard.js";
+import { MetricCard } from "./components/MetricCard.js";
 import { ProjectCard } from "./components/ProjectCard.js";
 import { FilterBar } from "./components/FilterBar.js";
 import { DEFAULT_FILTERS, filterProjects } from "./utils/filters.js";
@@ -9,7 +9,7 @@ const byId = (id) => document.getElementById(id);
 
 function renderStats(projects) {
   const stats = calculateStats(projects);
-  byId("stats").innerHTML = [StatCard("Proyectos", stats.total), StatCard("Activos", stats.active, true), StatCard("En planificación", stats.planning), StatCard("Bloqueados", stats.blocked), StatCard("Avance medido", stats.average === null ? "—" : `${stats.average}%`)].join("");
+  byId("stats").innerHTML = [MetricCard("Proyectos", stats.total), MetricCard("Activos", stats.active, true), MetricCard("En planificación", stats.planning), MetricCard("Bloqueados", stats.blocked), MetricCard("Avance medido", stats.average === null ? "—" : `${stats.average}%`)].join("");
 }
 
 function renderProjects(projects) {
@@ -47,4 +47,3 @@ async function init() {
 }
 
 init();
-
