@@ -1,76 +1,40 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Panel modular de control y portafolio vivo del ecosistema TryzUp.">
-  <meta name="theme-color" content="#090b10">
-  <title>TryzUp Project Hub</title>
+  <meta name="theme-color" content="#05090d"><title>TryzUp Project Hub · v0.1.1</title>
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
-  <header class="site-header">
-    <a class="brand" href="#" aria-label="TryzUp Project Hub, inicio">
-      <span class="brand-mark" aria-hidden="true">T</span>
-      <span><strong>TryzUp</strong><small>Project Hub · v0.1.0</small></span>
-    </a>
-    <a class="ghost-button" href="https://github.com/TryzUp-Nexus/tryzup-project-hub" target="_blank" rel="noreferrer">Ver repositorio</a>
+  <header class="topbar">
+    <a class="topbar-brand" href="#inicio" aria-label="TryzUp Project Hub, inicio"><span class="brand-crop"><img src="./assets/img/brand/tryzup-hero.png" alt=""></span><span><strong>TRYZUP</strong><small>PROJECT HUB</small></span></a>
+    <nav class="top-nav" aria-label="Navegación principal"><a class="is-active" href="#inicio">Dashboard</a><a href="#proyectos">Proyectos</a><a href="#roadmap">Roadmap</a><a href="#aprendizaje">Aprendizaje</a><a href="#recursos">Recursos</a></nav>
+    <div class="parent-brand"><span>by</span><img src="./assets/img/brand/pchomy-wordmark.png" alt="PcHomy"></div>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="sidebar">☰</button>
   </header>
-
-  <main id="main">
-    <section class="hero section">
-      <p class="eyebrow">Centro de operaciones</p>
-      <h1>Proyectos claros.<br><span>Evolución visible.</span></h1>
-      <p class="hero-copy">Un panel modular para seguir el ecosistema TryzUp, convertir aprendizaje en evidencia y mostrar cómo construimos.</p>
-      <div id="stats" class="stats-grid" aria-label="Resumen de proyectos"></div>
-    </section>
-
-    <section class="section" aria-labelledby="projects-title">
-      <div class="section-heading"><div><p class="eyebrow">Portafolio vivo</p><h2 id="projects-title">Proyectos</h2></div><p id="result-count" class="muted" aria-live="polite"></p></div>
-      <div id="filters"></div>
-      <div id="project-grid" class="project-grid"></div>
-      <div id="empty-state" class="empty-state" hidden>No encontramos proyectos con esos filtros.</div>
-    </section>
-
-    <section class="section split-grid">
-      <div class="panel"><p class="eyebrow">Próximos hitos</p><h2>Roadmap</h2><div id="roadmap" class="timeline"></div></div>
-      <div class="panel"><p class="eyebrow">Últimos movimientos</p><h2>Actividad reciente</h2><div id="activity" class="activity-list"></div></div>
-    </section>
-
-    <section class="section" aria-labelledby="learning-title">
-      <div class="section-heading"><div><p class="eyebrow">Aprender construyendo</p><h2 id="learning-title">Formación aplicada</h2></div></div>
-      <div id="learning-grid" class="learning-grid"></div>
-    </section>
-  </main>
-
-  <footer><p>TryzUp Project Hub · Foundation v0.1.0</p><p>Construido con HTML, CSS, JavaScript y JSON.</p></footer>
-  <script>
-    (() => {
-      const $ = (id) => document.getElementById(id);
-      const labels = { active: "Activo", development: "En desarrollo", planning: "Planificación", design: "Diseño", research: "Investigación", blocked: "Bloqueado", paused: "Pausado", complete: "Completado" };
-      const clean = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
-      const date = (value) => value ? new Intl.DateTimeFormat("es-CL", { day: "2-digit", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`)) : "Sin fecha";
-      const badge = (status) => `<span class="badge badge-${status}">${labels[status] || status}</span>`;
-      const progress = (value) => { const known = Number.isFinite(value); const amount = known ? Math.min(100, Math.max(0, value)) : 0; return `<div class="progress-head"><span>Avance</span><strong>${known ? `${amount}%` : "Por definir"}</strong></div><div class="progress-track" role="progressbar" aria-label="Avance del proyecto" aria-valuemin="0" aria-valuemax="100" ${known ? `aria-valuenow="${amount}"` : "aria-valuetext=\"Por definir\""}><span style="width:${amount}%"></span></div>`; };
-      const projectCard = (project) => {
-        const links = [project.repository && `<a href="${clean(project.repository)}" target="_blank" rel="noreferrer">GitHub</a>`, project.demo && `<a href="${clean(project.demo)}" target="_blank" rel="noreferrer">Demo</a>`].filter(Boolean).join("");
-        return `<article class="project-card"><div class="card-top"><span class="category">${clean(project.category)}</span>${badge(project.status)}</div><h3>${clean(project.name)}</h3><p class="description">${clean(project.description)}</p>${progress(project.progress)}<dl class="project-details"><div><dt>Fase</dt><dd>${clean(project.phase)}</dd></div><div><dt>Prioridad</dt><dd class="priority-${project.priority}">${clean(project.priority)}</dd></div></dl><div class="technologies">${(project.technologies || []).map((item) => `<span>${clean(item)}</span>`).join("")}</div><div class="project-note"><small>Último avance · ${date(project.lastUpdate)}</small><p>${clean(project.lastAchievement)}</p></div><div class="next-action"><small>Siguiente acción</small><p>→ ${clean(project.nextAction)}</p></div>${links ? `<div class="card-links">${links}</div>` : ""}</article>`;
-      };
-      const uniqueOptions = (values) => [...new Set(values)].sort((a, b) => a.localeCompare(b, "es")).map((value) => `<option value="${value}">${value}</option>`).join("");
-      const filtersMarkup = (projects) => `<form class="filter-bar" role="search" id="filter-form"><label class="search-field"><span class="sr-only">Buscar proyectos</span><input name="query" type="search" placeholder="Buscar proyecto o tecnología…" autocomplete="off"></label><label><span class="sr-only">Categoría</span><select name="category"><option value="all">Todas las categorías</option>${uniqueOptions(projects.map((p) => p.category))}</select></label><label><span class="sr-only">Estado</span><select name="status"><option value="all">Todos los estados</option>${uniqueOptions(projects.map((p) => p.status))}</select></label><label><span class="sr-only">Prioridad</span><select name="priority"><option value="all">Todas las prioridades</option>${uniqueOptions(projects.map((p) => p.priority))}</select></label><button type="reset">Limpiar</button></form>`;
-      const renderProjects = (projects) => { $("project-grid").innerHTML = projects.map(projectCard).join(""); $("result-count").textContent = `${projects.length} proyecto${projects.length === 1 ? "" : "s"}`; $("empty-state").hidden = projects.length !== 0; };
-      const applyFilters = (projects, values) => { const query = values.query.trim().toLocaleLowerCase("es"); return projects.filter((project) => { const text = [project.name, project.description, project.phase, ...(project.technologies || [])].join(" ").toLocaleLowerCase("es"); return (!query || text.includes(query)) && (values.category === "all" || project.category === values.category) && (values.status === "all" || project.status === values.status) && (values.priority === "all" || project.priority === values.priority); }); };
-      Promise.all([fetch("./data/projects.json").then((r) => { if (!r.ok) throw new Error("projects.json"); return r.json(); }), fetch("./data/learning.json").then((r) => { if (!r.ok) throw new Error("learning.json"); return r.json(); })]).then(([projects, learning]) => {
-        const measured = projects.filter((p) => Number.isFinite(p.progress)); const average = measured.length ? `${Math.round(measured.reduce((sum, p) => sum + p.progress, 0) / measured.length)}%` : "—";
-        const tiles = [["Proyectos", projects.length], ["Activos", projects.filter((p) => ["active", "development"].includes(p.status)).length], ["En planificación", projects.filter((p) => ["planning", "design", "research"].includes(p.status)).length], ["Bloqueados", projects.filter((p) => p.status === "blocked").length], ["Avance medido", average]];
-        $("stats").innerHTML = tiles.map(([label, value], index) => `<article class="stat-card${index === 1 ? " accent" : ""}"><strong>${value}</strong><span>${label}</span></article>`).join(""); renderProjects(projects);
-        $("filters").innerHTML = filtersMarkup(projects); const form = $("filter-form"); form.addEventListener("input", () => renderProjects(applyFilters(projects, Object.fromEntries(new FormData(form))))); form.addEventListener("reset", () => requestAnimationFrame(() => renderProjects(projects)));
-        $("roadmap").innerHTML = projects.filter((p) => p.targetDate).sort((a, b) => a.targetDate.localeCompare(b.targetDate)).map((p) => `<article><time>${date(p.targetDate)}</time><div><strong>${clean(p.name)}</strong><p>${clean(p.nextAction)}</p></div></article>`).join("") || '<p class="muted">Próximos hitos por definir.</p>';
-        $("activity").innerHTML = [...projects].sort((a, b) => String(b.lastUpdate || "").localeCompare(String(a.lastUpdate || ""))).slice(0, 5).map((p) => `<article><time>${date(p.lastUpdate)}</time><div><strong>${clean(p.name)}</strong><p>${clean(p.lastAchievement)}</p></div></article>`).join("");
-        $("learning-grid").innerHTML = learning.map((item) => `<article class="learning-card"><div><span class="category">${clean(item.area)}</span><strong>${item.progress}%</strong></div><h3>${clean(item.title)}</h3><p>${clean(item.evidence)}</p><div class="technologies">${item.technologies.map((tech) => `<span>${clean(tech)}</span>`).join("")}</div></article>`).join("");
-      }).catch((error) => { console.error(error); $("project-grid").innerHTML = '<div class="error-state">No fue posible cargar el panel.</div>'; });
-    })();
-  </script>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Navegación lateral">
+      <nav><a class="side-link is-active" href="#inicio"><span>⌂</span>Inicio</a><a class="side-link" href="#proyectos"><span>□</span>Proyectos</a><a class="side-link" href="#roadmap"><span>▦</span>Roadmap</a><a class="side-link" href="#actividad"><span>☷</span>Actividad</a><a class="side-link" href="#aprendizaje"><span>◫</span>Aprender</a><a class="side-link" href="#recursos"><span>◇</span>Recursos</a></nav>
+      <div class="side-group" id="recursos"><p>Herramientas</p><span class="side-link is-disabled"><span>◇</span>Plantillas <small>Próximamente</small></span><span class="side-link is-disabled"><span>&lt;/&gt;</span>Snippets <small>Próximamente</small></span><span class="side-link is-disabled"><span>⌁</span>Enlaces <small>Próximamente</small></span><span class="side-link is-disabled"><span>▣</span>Diario de trabajo <small>Próximamente</small></span></div>
+      <div class="side-group"><p>Sistema</p><span class="side-link is-disabled"><span>⚙</span>Ajustes <small>Próximamente</small></span><a class="side-link" href="https://github.com/TryzUp-Nexus/tryzup-project-hub#readme" target="_blank" rel="noreferrer"><span>?</span>Ayuda</a></div>
+      <article class="pchomy-card"><img src="./assets/img/brand/pchomy-emblem.png" alt="Emblema PcHomy"><div><strong>PcHomy</strong><p>Marca matriz y laboratorio de innovación.</p></div></article>
+    </aside>
+    <main id="main" class="dashboard">
+      <section class="hero panel" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy"><p class="eyebrow">Centro de operaciones</p><h1 id="hero-title">TryzUp Project Hub<span>.</span></h1><h2>Proyectos claros. <strong>Evolución visible.</strong></h2><p>Un panel modular para seguir el ecosistema TryzUp, convertir aprendizaje en evidencia y mostrar cómo construimos.</p><div class="hero-actions"><a class="button button-primary" href="#proyectos">Explorar proyectos</a><a class="button button-secondary" href="#roadmap">Ver roadmap</a></div></div>
+        <div class="hero-art" aria-hidden="true"><img src="./assets/img/brand/tryzup-hero.png" alt=""></div><div id="stats" class="stats-grid" aria-label="Resumen del ecosistema"></div>
+      </section>
+      <div class="dashboard-grid">
+        <section class="projects-panel panel" id="proyectos" aria-labelledby="projects-title"><header class="panel-heading"><div><p class="eyebrow">Portafolio vivo</p><h2 id="projects-title">Proyectos</h2></div><p id="result-count" class="result-count" aria-live="polite"></p></header><div id="filters"></div><div id="project-grid" class="project-grid"></div><div id="empty-state" class="empty-state" hidden>No encontramos proyectos con esos filtros.</div></section>
+        <section class="roadmap-panel panel" id="roadmap" aria-labelledby="roadmap-title"><header class="panel-heading"><div><p class="eyebrow">Ruta oficial</p><h2 id="roadmap-title">Roadmap</h2></div><span class="version-chip">Fase 02 · Próxima</span></header><div id="roadmap-list" class="roadmap-list"></div></section>
+        <section class="learning-panel panel" id="aprendizaje" aria-labelledby="learning-title"><header class="panel-heading"><div><p class="eyebrow">Aprender → Aplicar → Documentar → Mostrar</p><h2 id="learning-title">Aprender construyendo</h2></div></header><div id="learning-grid" class="learning-grid"></div></section>
+        <section class="activity-panel panel" id="actividad" aria-labelledby="activity-title"><header class="panel-heading"><div><p class="eyebrow">Evidencia real</p><h2 id="activity-title">Actividad reciente</h2></div></header><div id="activity" class="activity-list"></div></section>
+      </div>
+      <footer><p>TryzUp Project Hub · v0.1.1 Official Visual Identity</p><p>TryzUp · by PcHomy</p></footer>
+    </main>
+  </div>
+  <script type="module" src="./src/app.js"></script>
 </body>
 </html>
