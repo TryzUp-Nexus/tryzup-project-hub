@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel modular de control y portafolio vivo del ecosistema TryzUp.">
+  <meta name="theme-color" content="#090b10">
+  <title>TryzUp Project Hub</title>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="TryzUp Project Hub, inicio">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span><strong>TryzUp</strong><small>Project Hub · v0.1.0</small></span>
+    </a>
+    <a class="ghost-button" href="https://github.com/TryzUp-Nexus/tryzup-project-hub" target="_blank" rel="noreferrer">Ver repositorio</a>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <p class="eyebrow">Centro de operaciones</p>
+      <h1>Proyectos claros.<br><span>Evolución visible.</span></h1>
+      <p class="hero-copy">Un panel modular para seguir el ecosistema TryzUp, convertir aprendizaje en evidencia y mostrar cómo construimos.</p>
+      <div id="stats" class="stats-grid" aria-label="Resumen de proyectos"></div>
+    </section>
+
+    <section class="section" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow">Portafolio vivo</p><h2 id="projects-title">Proyectos</h2></div><p id="result-count" class="muted" aria-live="polite"></p></div>
+      <div id="filters"></div>
+      <div id="project-grid" class="project-grid"></div>
+      <div id="empty-state" class="empty-state" hidden>No encontramos proyectos con esos filtros.</div>
+    </section>
+
+    <section class="section split-grid">
+      <div class="panel"><p class="eyebrow">Próximos hitos</p><h2>Roadmap</h2><div id="roadmap" class="timeline"></div></div>
+      <div class="panel"><p class="eyebrow">Últimos movimientos</p><h2>Actividad reciente</h2><div id="activity" class="activity-list"></div></div>
+    </section>
+
+    <section class="section" aria-labelledby="learning-title">
+      <div class="section-heading"><div><p class="eyebrow">Aprender construyendo</p><h2 id="learning-title">Formación aplicada</h2></div></div>
+      <div id="learning-grid" class="learning-grid"></div>
+    </section>
+  </main>
+
+  <footer><p>TryzUp Project Hub · Foundation v0.1.0</p><p>Construido con HTML, CSS, JavaScript y JSON.</p></footer>
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
+
