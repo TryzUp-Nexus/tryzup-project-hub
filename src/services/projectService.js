@@ -10,15 +10,13 @@ async function loadJson(url) {
 export const getProjects = () => loadJson(PROJECTS_URL);
 export const getLearning = () => loadJson(LEARNING_URL);
 
-export function calculateStats(projects) {
+export function calculateStats(projects, learning = []) {
   const knownProgress = projects.filter(({ progress }) => Number.isFinite(progress));
   const average = knownProgress.length ? Math.round(knownProgress.reduce((sum, item) => sum + item.progress, 0) / knownProgress.length) : null;
   return {
-    total: projects.length,
     active: projects.filter(({ status }) => ["active", "development"].includes(status)).length,
-    planning: projects.filter(({ status }) => ["planning", "design", "research"].includes(status)).length,
-    blocked: projects.filter(({ status }) => status === "blocked").length,
-    average
+    development: projects.filter(({ status }) => status === "development").length,
+    average,
+    appliedLearning: learning.filter(({ status }) => status === "applied").length
   };
 }
-
