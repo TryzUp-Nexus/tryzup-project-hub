@@ -26,12 +26,13 @@ function renderProjects(projects) {
 }
 
 function renderRoadmap() {
-  byId("roadmap-list").innerHTML = roadmap.map((phase, index) => {
+  byId("roadmap-list").innerHTML = roadmap.slice(0, 4).map((phase, index) => {
     const number = index + 1;
     const state = number === 1 ? "is-complete" : number === 2 ? "is-current" : "";
     const status = number === 1 ? "Completa" : number === 2 ? "Próxima" : "Pendiente";
-    const detail = number === 2 ? "Contrato definitivo de projects.json aún no iniciado." : "Ruta oficial del producto.";
-    return `<article class="roadmap-item ${state}"><span class="roadmap-dot" aria-hidden="true"></span><div><strong>Fase ${String(number).padStart(2, "0")} · ${phase}</strong><p>${detail}</p></div><span class="phase-status">${status}</span></article>`;
+    const quarters = ["Q2 2025", "Q3 2025", "Q4 2025", "Q1 2026"];
+    const details = ["Estructura base, identidad y sistemas principales.", "Desarrollo de plataformas, MVPs y validaciones.", "Integraciones, comunidad y lanzamiento público.", "Optimización, automatización y nuevas líneas."];
+    return `<article class="roadmap-item ${state}"><span class="roadmap-dot" aria-hidden="true"></span><div><strong><em>${quarters[index]}</em><span>•</span> Fase ${number}: ${phase}</strong><p>${details[index]}</p></div><span class="phase-status">${status}</span></article>`;
   }).join("");
 }
 
@@ -57,7 +58,14 @@ async function init() {
     renderStats(projects, learning); renderProjects(projects); renderRoadmap(); renderActivity(projects); renderLearning(learning);
     byId("filters").innerHTML = FilterBar(projects);
     const form = byId("filter-form");
-    form.addEventListener("input", () => renderProjects(filterProjects(projects, Object.fromEntries(new FormData(form)))));
+    const applyFilters = () => {
+      const values = Object.fromEntries(new FormData(form));
+      const filtered = filterProjects(projects, values);
+      const sorted = [...filtered].sort((a, b) => values.sort === "name" ? a.name.localeCompare(b.name, "es") : values.sort === "progress" ? (b.progress ?? -1) - (a.progress ?? -1) : new Date(b.lastUpdate) - new Date(a.lastUpdate));
+      renderProjects(sorted);
+    };
+    form.addEventListener("input", applyFilters);
+    form.addEventListener("change", applyFilters);
     form.addEventListener("reset", () => requestAnimationFrame(() => renderProjects(filterProjects(projects, DEFAULT_FILTERS))));
   } catch (error) {
     console.error(error);
