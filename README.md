@@ -2,7 +2,7 @@
 
 Modular Project Control Dashboard & Living Portfolio for the TryzUp ecosystem.
 
-## v0.1.1 — Official Visual Identity
+## v0.1.2 — Visual Fidelity
 
 This first release provides a data-driven dashboard built with HTML5, CSS3, JavaScript ES Modules and JSON. Projects and learning records live outside the interface, so the hub can grow without duplicating markup.
 

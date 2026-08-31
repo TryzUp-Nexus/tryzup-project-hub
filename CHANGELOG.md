@@ -2,6 +2,16 @@
 
 All notable changes to TryzUp Project Hub are documented here.
 
+## [0.1.2] - 2026-08-31
+
+### Changed
+
+- Refined the desktop composition to closely match the approved visual reference
+- Rebalanced hero artwork, statistics, project cards, roadmap and activity density
+- Added compact status tabs and project sorting controls
+- Improved PcHomy attribution, navigation utilities and sidebar presentation
+- Preserved responsive behavior without horizontal overflow
+
 ## [0.1.1] - 2026-08-31
 
 ### Added
