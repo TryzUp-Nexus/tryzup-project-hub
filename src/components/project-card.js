@@ -1,10 +1,21 @@
 import { ProgressBar } from "./progress-bar.js";
 import { StatusBadge } from "./status-badge.js";
 
-const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);
+const escapeHtml = (value = "") =>
+  String(value).replace(
+    /[&<>'"]/g,
+    (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]
+  );
 
 export function ProjectCard(project) {
-  const links = [project.repository && `<a href="${escapeHtml(project.repository)}" target="_blank" rel="noreferrer">GitHub</a>`, project.demo && `<a href="${escapeHtml(project.demo)}" target="_blank" rel="noreferrer">Demo</a>`].filter(Boolean).join("");
+  const links = [
+    project.repository &&
+      `<a href="${escapeHtml(project.repository)}" target="_blank" rel="noreferrer">GitHub</a>`,
+    project.demo &&
+      `<a href="${escapeHtml(project.demo)}" target="_blank" rel="noreferrer">Demo</a>`,
+  ]
+    .filter(Boolean)
+    .join("");
   const initial = escapeHtml(project.name.charAt(0).toUpperCase());
   return `<article class="project-card">
     <div class="card-top"><div class="project-identity"><span class="project-icon" aria-hidden="true">${initial}</span><div><h3>${escapeHtml(project.name)}</h3><span class="category">${escapeHtml(project.category)}</span></div></div>${StatusBadge(project.status)}</div>

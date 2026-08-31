@@ -12,11 +12,13 @@ export const getLearning = () => loadJson(LEARNING_URL);
 
 export function calculateStats(projects, learning = []) {
   const knownProgress = projects.filter(({ progress }) => Number.isFinite(progress));
-  const average = knownProgress.length ? Math.round(knownProgress.reduce((sum, item) => sum + item.progress, 0) / knownProgress.length) : null;
+  const average = knownProgress.length
+    ? Math.round(knownProgress.reduce((sum, item) => sum + item.progress, 0) / knownProgress.length)
+    : null;
   return {
     active: projects.filter(({ status }) => ["active", "development"].includes(status)).length,
     development: projects.filter(({ status }) => status === "development").length,
     average,
-    appliedLearning: learning.filter(({ status }) => status === "applied").length
+    appliedLearning: learning.filter(({ status }) => status === "applied").length,
   };
 }

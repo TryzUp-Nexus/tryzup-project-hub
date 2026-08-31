@@ -1,6 +1,29 @@
 [
-  {"id":"web-foundations","title":"Fundamentos Web","area":"Frontend","status":"applied","progress":80,"evidence":"Arquitectura, interfaz responsive y componentes del Project Hub","technologies":["HTML5","CSS3","JavaScript"]},
-  {"id":"git-workflow","title":"Git y GitHub profesional","area":"DevOps","status":"applied","progress":65,"evidence":"Repositorio versionado y despliegue con GitHub Actions","technologies":["Git","GitHub","CI/CD"]},
-  {"id":"data-modeling","title":"Modelado de datos","area":"Arquitectura","status":"in-progress","progress":45,"evidence":"Datos de proyectos desacoplados de la interfaz","technologies":["JSON","Schemas","Validation"]}
+  {
+    "id": "web-foundations",
+    "title": "Fundamentos Web",
+    "area": "Frontend",
+    "status": "applied",
+    "progress": 80,
+    "evidence": "Arquitectura, interfaz responsive y componentes del Project Hub",
+    "technologies": ["HTML5", "CSS3", "JavaScript"]
+  },
+  {
+    "id": "git-workflow",
+    "title": "Git y GitHub profesional",
+    "area": "DevOps",
+    "status": "applied",
+    "progress": 65,
+    "evidence": "Repositorio versionado y despliegue con GitHub Actions",
+    "technologies": ["Git", "GitHub", "CI/CD"]
+  },
+  {
+    "id": "data-modeling",
+    "title": "Modelado de datos",
+    "area": "Arquitectura",
+    "status": "in-progress",
+    "progress": 45,
+    "evidence": "Datos de proyectos desacoplados de la interfaz",
+    "technologies": ["JSON", "Schemas", "Validation"]
+  }
 ]
-
