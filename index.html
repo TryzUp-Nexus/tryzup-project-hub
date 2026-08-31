@@ -10,25 +10,65 @@
     <meta name="theme-color" content="#05090d" />
     <title>TryzUp Project Hub · v0.1.2</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/brand-icons.css" />
   </head>
+
   <body>
     <a class="skip-link" href="#main">Saltar al contenido</a>
+
     <header class="topbar">
-      <a class="topbar-brand" href="#inicio" aria-label="TryzUp Project Hub, inicio"
-        ><span class="brand-crop"><img src="./assets/img/brand/tryzup-hero.png" alt="" /></span
-        ><span><strong>TRYZUP</strong><small>PROJECT HUB</small></span></a
-      >
+      <a class="topbar-brand" href="#inicio" aria-label="TryzUp Project Hub, inicio">
+        <img class="brand-mark" src="./assets/img/brand/tryzup-mark.png" alt="TryzUp" />
+
+        <span class="brand-copy">
+          <strong>TRYZUP</strong>
+          <small>PROJECT HUB</small>
+        </span>
+      </a>
+
       <nav class="top-nav" aria-label="Navegación principal">
-        <a class="is-active" href="#inicio"><span>▦</span>Dashboard</a
-        ><a href="#proyectos"><span>□</span>Proyectos</a><a href="#roadmap"><span>▣</span>Roadmap</a
-        ><a href="#aprendizaje"><span>◫</span>Aprendizaje</a
-        ><a href="#recursos"><span>◇</span>Recursos</a>
+        <a class="is-active" href="#inicio">
+          <span class="nav-icon" data-icon="dashboard"></span>
+          Dashboard
+        </a>
+
+        <a href="#proyectos">
+          <span class="nav-icon" data-icon="projects"></span>
+          Proyectos
+        </a>
+
+        <a href="#roadmap">
+          <span class="nav-icon" data-icon="roadmap"></span>
+          Roadmap
+        </a>
+
+        <a href="#aprendizaje">
+          <span class="nav-icon" data-icon="learning"></span>
+          Aprendizaje
+        </a>
+
+        <a href="#recursos">
+          <span class="nav-icon" data-icon="resources"></span>
+          Recursos
+        </a>
       </nav>
+
       <div class="topbar-tools">
-        <div class="parent-brand">
-          <span>by</span><strong>PcHomy</strong
-          ><img src="./assets/img/brand/pchomy-emblem.png" alt="Emblema PcHomy" />
+        <div class="topbar-parent-name">
+          <span>by</span>
+          <strong>PcHomy</strong>
         </div>
+
+        <span class="topbar-divider" aria-hidden="true"></span>
+
+        <img
+          class="topbar-pch-mark"
+          src="./assets/img/brand/pchomy-emblem.png"
+          alt="Emblema PcHomy"
+        />
+
+        <span class="topbar-divider" aria-hidden="true"></span>
+
         <button
           class="icon-button"
           type="button"
@@ -36,11 +76,14 @@
           disabled
           title="Próximamente"
         >
-          ♧</button
-        ><span class="user-avatar" aria-label="Perfil de usuario, próximamente" title="Próximamente"
-          >U</span
-        >
+          <span data-icon="bell"></span>
+        </button>
+
+        <span class="user-avatar" aria-label="Perfil de usuario, próximamente" title="Próximamente">
+          U
+        </span>
       </div>
+
       <button
         class="menu-toggle"
         id="menu-toggle"
@@ -49,132 +92,233 @@
         aria-expanded="false"
         aria-controls="sidebar"
       >
-        ☰
+        <span data-icon="menu"></span>
       </button>
     </header>
+
     <div class="app-shell">
       <aside class="sidebar" id="sidebar" aria-label="Navegación lateral">
         <nav>
-          <a class="side-link is-active" href="#inicio"><span>⌂</span>Inicio</a
-          ><a class="side-link" href="#proyectos"><span>□</span>Proyectos</a
-          ><a class="side-link" href="#roadmap"><span>▦</span>Roadmap</a
-          ><a class="side-link" href="#actividad"><span>☷</span>Actividad</a
-          ><a class="side-link" href="#aprendizaje"><span>◫</span>Aprender</a
-          ><a class="side-link" href="#recursos"><span>◇</span>Recursos</a
-          ><span class="side-link is-disabled"
-            ><span>▤</span>Notas <small>Próximamente</small></span
-          >
+          <a class="side-link is-active" href="#inicio">
+            <span data-icon="home"></span>
+            Inicio
+          </a>
+
+          <a class="side-link" href="#proyectos">
+            <span data-icon="projects"></span>
+            Proyectos
+          </a>
+
+          <a class="side-link" href="#roadmap">
+            <span data-icon="roadmap"></span>
+            Roadmap
+          </a>
+
+          <a class="side-link" href="#actividad">
+            <span data-icon="activity"></span>
+            Actividad
+          </a>
+
+          <a class="side-link" href="#aprendizaje">
+            <span data-icon="learning"></span>
+            Aprender
+          </a>
+
+          <a class="side-link" href="#recursos">
+            <span data-icon="resources"></span>
+            Recursos
+          </a>
+
+          <span class="side-link is-disabled">
+            <span data-icon="notes"></span>
+            Notas
+            <small>Próximamente</small>
+          </span>
         </nav>
+
         <div class="side-group" id="recursos">
           <p>Herramientas</p>
-          <span class="side-link is-disabled"
-            ><span>◇</span>Plantillas <small>Próximamente</small></span
-          ><span class="side-link is-disabled"
-            ><span>&lt;/&gt;</span>Snippets <small>Próximamente</small></span
-          ><span class="side-link is-disabled"
-            ><span>⌁</span>Enlaces <small>Próximamente</small></span
-          ><span class="side-link is-disabled"
-            ><span>▣</span>Diario de trabajo <small>Próximamente</small></span
-          >
+
+          <span class="side-link is-disabled">
+            <span data-icon="template"></span>
+            Plantillas
+            <small>Próximamente</small>
+          </span>
+
+          <span class="side-link is-disabled">
+            <span data-icon="code"></span>
+            Snippets
+            <small>Próximamente</small>
+          </span>
+
+          <span class="side-link is-disabled">
+            <span data-icon="link"></span>
+            Enlaces
+            <small>Próximamente</small>
+          </span>
+
+          <span class="side-link is-disabled">
+            <span data-icon="journal"></span>
+            Diario de trabajo
+            <small>Próximamente</small>
+          </span>
         </div>
+
         <div class="side-group">
           <p>Sistema</p>
-          <span class="side-link is-disabled"
-            ><span>⚙</span>Ajustes <small>Próximamente</small></span
-          ><a
+
+          <span class="side-link is-disabled">
+            <span data-icon="settings"></span>
+            Ajustes
+            <small>Próximamente</small>
+          </span>
+
+          <a
             class="side-link"
             href="https://github.com/TryzUp-Nexus/tryzup-project-hub#readme"
             target="_blank"
             rel="noreferrer"
-            ><span>?</span>Ayuda</a
           >
+            <span data-icon="help"></span>
+            Ayuda
+          </a>
         </div>
+
         <article class="pchomy-card">
-          <img src="./assets/img/brand/pchomy-emblem.png" alt="Emblema PcHomy" />
-          <div>
+          <div class="pchomy-card-heading">
+            <img src="./assets/img/brand/pchomy-emblem.png" alt="Emblema PcHomy" />
             <strong>PcHomy</strong>
-            <p>Marca personal y laboratorio de crecimiento continuo.</p>
-            <span class="is-disabled" aria-disabled="true">Perfil · Próximamente</span>
           </div>
+
+          <p>Marca personal y laboratorio de crecimiento continuo.</p>
+
+          <span class="pchomy-profile-button is-disabled" aria-disabled="true">
+            Perfil · Próximamente
+          </span>
         </article>
       </aside>
+
       <main id="main" class="dashboard">
         <section class="hero panel" id="inicio" aria-labelledby="hero-title">
           <div class="hero-copy">
             <p class="eyebrow">Centro de operaciones</p>
             <h1 id="hero-title">TryzUp Project Hub<span>.</span></h1>
             <h2>Proyectos claros. <strong>Evolución visible.</strong></h2>
+
             <p>
               Un panel modular para seguir el ecosistema TryzUp, convertir aprendizaje en evidencia
               y mostrar cómo construimos.
             </p>
+
             <div class="hero-actions">
-              <a class="button button-primary" href="#proyectos"
-                ><span>↗</span> Explorar proyectos</a
-              ><a class="button button-secondary" href="#roadmap"><span>↗</span> Ver roadmap</a>
+              <a class="button button-primary" href="#proyectos">
+                <span class="button-icon" data-icon="rocket"></span>
+                Explorar proyectos
+              </a>
+
+              <a class="button button-secondary" href="#roadmap">
+                <span class="button-icon" data-icon="roadmap"></span>
+                Ver roadmap
+              </a>
             </div>
           </div>
+
           <div class="hero-art" aria-hidden="true">
             <img src="./assets/img/brand/tryzup-hero.png" alt="" />
           </div>
+
           <div id="stats" class="stats-grid" aria-label="Resumen del ecosistema"></div>
         </section>
+
         <div class="dashboard-grid">
-          <section class="projects-panel panel" id="proyectos" aria-labelledby="projects-title">
-            <header class="panel-heading">
-              <div>
-                <h2 id="projects-title"><span>□</span> Proyectos</h2>
+          <div class="dashboard-column dashboard-column-main">
+            <section class="projects-panel panel" id="proyectos" aria-labelledby="projects-title">
+              <header class="panel-heading">
+                <div>
+                  <h2 id="projects-title">
+                    <span class="heading-icon" data-icon="projects"></span>
+                    Proyectos
+                  </h2>
+                </div>
+
+                <p id="result-count" class="result-count" aria-live="polite"></p>
+              </header>
+
+              <div id="filters"></div>
+              <div id="project-grid" class="project-grid"></div>
+
+              <div id="empty-state" class="empty-state" hidden>
+                No encontramos proyectos con esos filtros.
               </div>
-              <p id="result-count" class="result-count" aria-live="polite"></p>
-            </header>
-            <div id="filters"></div>
-            <div id="project-grid" class="project-grid"></div>
-            <div id="empty-state" class="empty-state" hidden>
-              No encontramos proyectos con esos filtros.
-            </div>
-            <span class="panel-cta is-disabled" aria-disabled="true"
-              >▦ Vista completa · Próximamente</span
-            >
-          </section>
-          <section class="roadmap-panel panel" id="roadmap" aria-labelledby="roadmap-title">
-            <header class="panel-heading">
-              <div>
-                <h2 id="roadmap-title"><span>◫</span> Roadmap</h2>
-              </div>
-              <a class="panel-link" href="./docs/ROADMAP.md">Ver roadmap completo</a>
-            </header>
-            <div id="roadmap-list" class="roadmap-list"></div>
-          </section>
-          <section class="learning-panel panel" id="aprendizaje" aria-labelledby="learning-title">
-            <header class="panel-heading">
-              <div>
-                <h2 id="learning-title"><span>◇</span> Aprender construyendo</h2>
-                <p>Conecta tu formación con la práctica real. Cada curso impulsa un proyecto.</p>
-              </div>
-              <span class="panel-link is-disabled" aria-disabled="true"
-                >Ruta completa · Próximamente</span
-              >
-            </header>
-            <div id="learning-grid" class="learning-grid"></div>
-          </section>
-          <section class="activity-panel panel" id="actividad" aria-labelledby="activity-title">
-            <header class="panel-heading">
-              <div>
-                <h2 id="activity-title"><span>◉</span> Actividad reciente</h2>
-              </div>
-              <span class="panel-link is-disabled" aria-disabled="true"
-                >Historial completo · Próximamente</span
-              >
-            </header>
-            <div id="activity" class="activity-list"></div>
-          </section>
+
+              <span class="panel-cta is-disabled" aria-disabled="true">
+                <span class="inline-icon" data-icon="dashboard"></span>
+                Vista completa · Próximamente
+              </span>
+            </section>
+
+            <section class="learning-panel panel" id="aprendizaje" aria-labelledby="learning-title">
+              <header class="panel-heading">
+                <div>
+                  <h2 id="learning-title">
+                    <span class="heading-icon" data-icon="learning"></span>
+                    Aprender construyendo
+                  </h2>
+
+                  <p>Conecta tu formación con la práctica real. Cada curso impulsa un proyecto.</p>
+                </div>
+
+                <span class="panel-link is-disabled" aria-disabled="true">
+                  Ruta completa · Próximamente
+                </span>
+              </header>
+
+              <div id="learning-grid" class="learning-grid"></div>
+            </section>
+          </div>
+
+          <div class="dashboard-column dashboard-column-side">
+            <section class="roadmap-panel panel" id="roadmap" aria-labelledby="roadmap-title">
+              <header class="panel-heading">
+                <div>
+                  <h2 id="roadmap-title">
+                    <span class="heading-icon" data-icon="roadmap"></span>
+                    Roadmap
+                  </h2>
+                </div>
+
+                <a class="panel-link" href="./docs/ROADMAP.md">Ver roadmap completo</a>
+              </header>
+
+              <div id="roadmap-list" class="roadmap-list"></div>
+            </section>
+
+            <section class="activity-panel panel" id="actividad" aria-labelledby="activity-title">
+              <header class="panel-heading">
+                <div>
+                  <h2 id="activity-title">
+                    <span class="heading-icon" data-icon="activity"></span>
+                    Actividad reciente
+                  </h2>
+                </div>
+
+                <span class="panel-link is-disabled" aria-disabled="true">
+                  Historial completo · Próximamente
+                </span>
+              </header>
+
+              <div id="activity" class="activity-list"></div>
+            </section>
+          </div>
         </div>
+
         <footer>
           <p>TryzUp Project Hub · v0.1.2 Visual Fidelity</p>
           <p>TryzUp · by PcHomy</p>
         </footer>
       </main>
     </div>
+
     <script type="module" src="./src/app.js"></script>
   </body>
 </html>

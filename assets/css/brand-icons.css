@@ -1,0 +1,1391 @@
+/* TryzUp Project Hub — Official UI Fidelity Pass 2
+   Loaded after styles.css.
+   This file intentionally contains presentation overrides only. */
+
+/* ──────────────────────────────────────────────────────────
+   HEADER BRAND
+   ────────────────────────────────────────────────────────── */
+
+.brand-mark {
+  display: block;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 0 12px rgba(24, 221, 235, 0.14));
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  line-height: 1;
+}
+
+.topbar-brand .brand-copy strong {
+  display: block;
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: 0.045em;
+}
+
+.topbar-brand .brand-copy small {
+  display: block;
+  margin-top: 6px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: 0.17em;
+}
+
+.topbar-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-parent-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.topbar-parent-name strong {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.topbar-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(143, 160, 175, 0.18);
+}
+
+.topbar-pch-mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+}
+
+.user-avatar {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ICON SYSTEM
+   ────────────────────────────────────────────────────────── */
+
+.ui-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.top-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.nav-icon,
+.heading-icon,
+.button-icon,
+.inline-icon,
+.side-link > span:first-child {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.nav-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.nav-icon .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.side-link > span:first-child {
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+}
+
+.side-link > span:first-child .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.side-link.is-active > span:first-child,
+.side-link:hover > span:first-child,
+.top-nav a.is-active .nav-icon,
+.top-nav a:hover .nav-icon {
+  color: var(--cyan);
+}
+
+.panel-heading h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heading-icon {
+  width: 21px;
+  height: 21px;
+  color: #dce8ee;
+}
+
+.heading-icon .ui-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.button {
+  align-items: center;
+  gap: 8px;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.button-icon .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.inline-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.inline-icon .ui-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-button .ui-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.menu-toggle {
+  place-items: center;
+}
+
+.menu-toggle .ui-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   SIDEBAR PcHomy CARD
+   ────────────────────────────────────────────────────────── */
+
+.pchomy-card {
+  display: block;
+  padding: 14px;
+}
+
+.pchomy-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pchomy-card-heading img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.pchomy-card-heading strong {
+  font-size: 18px;
+}
+
+.pchomy-card > p {
+  margin: 10px 0 12px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.pchomy-profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35px;
+  padding: 7px 10px;
+  color: #cfd8de;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.018);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* ──────────────────────────────────────────────────────────
+   HERO — SHOW THE CLEAN ART WITHOUT CROPPING
+   ────────────────────────────────────────────────────────── */
+
+.hero {
+  min-height: 342px;
+  grid-template-columns: minmax(390px, 1.08fr) minmax(330px, 0.86fr) minmax(330px, 0.76fr);
+  gap: 18px;
+  padding: 20px 28px;
+}
+
+.hero-art {
+  height: 285px;
+  overflow: visible;
+  opacity: 1;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+.hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+  filter: drop-shadow(0 24px 30px rgba(24, 221, 235, 0.12));
+}
+
+/* ──────────────────────────────────────────────────────────
+   STATS
+   ────────────────────────────────────────────────────────── */
+
+.stat-card::before {
+  content: none !important;
+  display: none !important;
+}
+
+.stat-card {
+  display: grid !important;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  min-height: 120px;
+  column-gap: 12px;
+  padding: 16px !important;
+}
+
+.stat-icon {
+  display: grid !important;
+  place-items: center;
+  width: 44px !important;
+  height: 44px !important;
+  margin: 0 !important;
+  border: 1px solid rgba(24, 221, 235, 0.23);
+  border-radius: 9px;
+  background: rgba(24, 221, 235, 0.09);
+  color: var(--cyan) !important;
+}
+
+.stat-icon .ui-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.stat-card:nth-child(2) .stat-icon {
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa !important;
+}
+
+.stat-card:nth-child(4) .stat-icon {
+  border-color: rgba(255, 159, 53, 0.25);
+  background: rgba(255, 159, 53, 0.1);
+  color: var(--orange) !important;
+}
+
+.stat-content {
+  min-width: 0;
+}
+
+.stat-card .stat-label {
+  display: block;
+  color: #d8e0e5;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.stat-content strong {
+  margin-top: 5px;
+}
+
+.stat-content small {
+  margin-top: 6px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   INDEPENDENT DASHBOARD COLUMNS
+   Official reference does NOT share row heights between
+   Projects/Roadmap or Learning/Activity.
+   ────────────────────────────────────────────────────────── */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.75fr) minmax(355px, 0.95fr);
+  gap: 12px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.dashboard-column {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  min-width: 0;
+}
+
+.projects-panel,
+.roadmap-panel,
+.learning-panel,
+.activity-panel {
+  align-self: start;
+  min-height: 0 !important;
+}
+
+.roadmap-panel {
+  min-height: 342px !important;
+}
+
+.activity-panel {
+  min-height: 268px !important;
+}
+
+.learning-panel {
+  min-height: 0 !important;
+}
+
+/* ──────────────────────────────────────────────────────────
+   PROJECT CARDS — IDENTITY AND SPACING
+   ────────────────────────────────────────────────────────── */
+
+.projects-panel {
+  padding: 14px;
+}
+
+.project-grid {
+  gap: 7px;
+}
+
+.project-card {
+  min-height: 172px;
+  padding: 11px 12px;
+  overflow: hidden;
+}
+
+.card-top {
+  align-items: flex-start;
+}
+
+.project-identity {
+  gap: 9px;
+}
+
+.project-title-block {
+  min-width: 0;
+}
+
+.project-card h3 {
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.project-card .category {
+  margin-top: 2px;
+  font-size: 9px;
+}
+
+.project-visual {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(24, 221, 235, 0.24);
+  border-radius: 10px;
+  background: rgba(24, 221, 235, 0.08);
+  color: var(--cyan);
+}
+
+.project-visual-card {
+  width: 42px;
+  height: 42px;
+}
+
+.project-visual-activity {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.project-visual-svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visual-tryzup {
+  padding: 2px;
+  background: rgba(24, 221, 235, 0.06);
+}
+
+.visual-legado {
+  color: #49c8ff;
+  border-color: rgba(73, 200, 255, 0.28);
+  background: rgba(73, 200, 255, 0.08);
+}
+
+.visual-market {
+  color: var(--orange);
+  border-color: rgba(255, 159, 53, 0.3);
+  background: rgba(255, 159, 53, 0.09);
+}
+
+.visual-cv {
+  color: #68b7ff;
+  border-color: rgba(104, 183, 255, 0.28);
+  background: rgba(104, 183, 255, 0.08);
+}
+
+.visual-arca {
+  color: #25d8f3;
+  border-color: rgba(37, 216, 243, 0.28);
+  background: rgba(37, 216, 243, 0.08);
+}
+
+.project-card .description {
+  min-height: 34px;
+  margin: 8px 0;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.project-card .technologies {
+  display: none;
+}
+
+.project-card .progress-head {
+  font-size: 9px;
+}
+
+.project-card .progress-track {
+  height: 4px;
+  margin: 4px 0 7px;
+}
+
+.project-card .project-meta {
+  padding: 5px 0;
+  margin: 0;
+  border-top: 1px solid rgba(39, 70, 87, 0.55);
+  border-bottom: 1px solid rgba(39, 70, 87, 0.55);
+}
+
+.project-card .project-meta span {
+  font-size: 8px;
+}
+
+.project-card .next-action {
+  margin-top: 7px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.project-card .next-action small {
+  font-size: 7px;
+}
+
+.project-card .next-action p {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 3px;
+  font-size: 9px;
+}
+
+.project-card .card-links {
+  margin-top: 5px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   LEARNING — COMPACT STRIP LIKE THE OFFICIAL REFERENCE
+   ────────────────────────────────────────────────────────── */
+
+.learning-panel {
+  padding: 13px 14px;
+}
+
+.learning-panel .panel-heading {
+  margin-bottom: 9px;
+}
+
+.learning-panel .panel-heading p {
+  margin: 4px 0 0;
+}
+
+.learning-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.learning-card {
+  min-height: 76px;
+  padding: 9px 10px;
+}
+
+.learning-card h3 {
+  margin: 4px 0 2px;
+  font-size: 10px;
+}
+
+.learning-card p {
+  display: none;
+}
+
+.learning-card .technologies {
+  display: none;
+}
+
+.learning-meter {
+  margin-top: 7px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ROADMAP
+   ────────────────────────────────────────────────────────── */
+
+.roadmap-panel,
+.activity-panel {
+  padding: 14px 16px;
+}
+
+.roadmap-list {
+  gap: 3px;
+}
+
+.roadmap-item {
+  min-height: 56px;
+  padding: 7px 0;
+}
+
+.roadmap-item strong {
+  font-size: 10px;
+}
+
+.roadmap-item p {
+  margin-top: 5px;
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.phase-status {
+  margin-top: 2px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ACTIVITY — PROJECT IDENTITY INSTEAD OF GENERIC ARROWS
+   ────────────────────────────────────────────────────────── */
+
+.activity-list article {
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  min-height: 57px;
+  padding: 8px 0;
+}
+
+.activity-list article strong {
+  font-size: 10px;
+}
+
+.activity-list article p {
+  margin-top: 3px;
+  font-size: 8px;
+}
+
+.activity-list time {
+  font-size: 8px;
+}
+
+/* ──────────────────────────────────────────────────────────
+   RESPONSIVE
+   ────────────────────────────────────────────────────────── */
+
+@media (min-width: 1051px) {
+  .topbar {
+    grid-template-columns: 245px 1fr auto;
+  }
+
+  .topbar-brand {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .hero {
+    grid-template-columns: minmax(330px, 1fr) minmax(280px, 0.8fr) minmax(300px, 0.8fr);
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1050px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-column {
+    gap: 12px;
+  }
+
+  .roadmap-panel,
+  .activity-panel {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .brand-mark {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  .topbar-brand .brand-copy strong {
+    font-size: 21px;
+  }
+
+  .topbar-brand .brand-copy small {
+    font-size: 9px;
+  }
+
+  .topbar-divider,
+  .topbar-pch-mark,
+  .topbar-parent-name {
+    display: none;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .project-grid,
+  .learning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .topbar-brand .brand-copy strong {
+    font-size: 18px;
+  }
+
+  .topbar-brand .brand-copy small {
+    margin-top: 4px;
+    font-size: 8px;
+  }
+
+  .stat-card {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .stat-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   OFFICIAL UI FIDELITY PASS 3
+   Fixes implicit grid placement inherited from the original
+   dashboard layout after introducing independent columns.
+   ────────────────────────────────────────────────────────── */
+
+.dashboard-column {
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: max-content;
+  align-items: start;
+}
+
+/* Reset any explicit grid placement inherited from styles.css. */
+.dashboard-column > .projects-panel,
+.dashboard-column > .roadmap-panel,
+.dashboard-column > .learning-panel,
+.dashboard-column > .activity-panel {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  position: relative;
+  inset: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto !important;
+  margin: 0;
+  align-self: start;
+}
+
+/* Keep each section in normal document flow. */
+.projects-panel,
+.learning-panel,
+.roadmap-panel,
+.activity-panel {
+  overflow: hidden;
+}
+
+/* Projects should finish before the learning strip begins. */
+.projects-panel {
+  min-height: 0 !important;
+}
+
+.learning-panel {
+  margin-top: 0 !important;
+  min-height: 0 !important;
+}
+
+/* Roadmap and activity should stack, not share/overlap a grid row. */
+.roadmap-panel {
+  min-height: 0 !important;
+}
+
+.activity-panel {
+  min-height: 0 !important;
+}
+
+/* Hero middle artwork: constrain it to its own column. */
+.hero-art {
+  width: 100%;
+  max-width: 390px;
+  min-width: 0;
+  height: 270px;
+  justify-self: center;
+  align-self: center;
+  overflow: hidden;
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: none !important;
+}
+
+/* Prevent stats from being visually invaded by the middle artwork. */
+.stats-grid {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.hero-art {
+  z-index: 1;
+}
+
+/* Bring the title line even closer to the official reference. */
+.hero h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.28em;
+  margin-top: 0.72rem;
+  line-height: 1.08;
+}
+
+.hero h2 strong {
+  display: inline-block;
+}
+
+/* Slightly tighten the main sections after fixing the flow. */
+.dashboard-column-main,
+.dashboard-column-side {
+  row-gap: 10px;
+}
+
+.learning-panel .panel-heading,
+.activity-panel .panel-heading,
+.roadmap-panel .panel-heading {
+  margin-bottom: 10px;
+}
+
+/* Keep the learning strip compact but fully inside its own panel. */
+.learning-grid {
+  position: relative;
+  z-index: 1;
+  align-items: stretch;
+}
+
+.learning-card {
+  position: relative;
+  min-width: 0;
+}
+
+/* Keep activity rows legible and contained. */
+.activity-list {
+  position: relative;
+}
+
+.activity-list article {
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-list article > div {
+  min-width: 0;
+}
+
+.activity-list article strong,
+.activity-list article p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Desktop fidelity proportions. */
+@media (min-width: 1251px) {
+  .hero {
+    grid-template-columns:
+      minmax(420px, 1.12fr)
+      minmax(300px, 0.72fr)
+      minmax(360px, 0.82fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1.72fr) minmax(360px, 0.93fr);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   OFFICIAL UI FIDELITY PASS 4
+   Final hero composition + learning evidence strip
+   ────────────────────────────────────────────────────────── */
+
+/* Match the official 35 / 30 / 35 visual balance:
+   copy | artwork | metrics. */
+.hero {
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.9fr)
+    minmax(0, 1.05fr);
+  column-gap: 14px;
+}
+
+.hero-copy {
+  max-width: 535px;
+}
+
+/* Force the same intentional two-line rhythm as the reference. */
+.hero-copy > p:not(.eyebrow) {
+  max-width: 430px;
+  line-height: 1.5;
+}
+
+/* Move the clean artwork toward the copy column while keeping
+   the stats fully readable on the right. */
+.hero-art {
+  width: 100%;
+  max-width: 470px;
+  height: 286px;
+  justify-self: center;
+  overflow: hidden;
+  transform: translateX(-5%);
+}
+
+.hero-art img {
+  width: 118%;
+  max-width: none;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transform: translateX(-10%) scale(1.02) !important;
+}
+
+/* The official reference treats the four metrics as one strong
+   right-hand module. */
+.stats-grid {
+  width: 100%;
+  align-self: stretch;
+  justify-self: stretch;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(118px, 1fr);
+  gap: 12px;
+}
+
+.stat-card {
+  min-height: 118px !important;
+  height: 100%;
+}
+
+/* ──────────────────────────────────────────────────────────
+   LEARNING EVIDENCE STRIP
+   Render real technologies from learning.json as compact
+   evidence cards. No fictional course data is introduced.
+   ────────────────────────────────────────────────────────── */
+
+.learning-panel {
+  padding: 12px 14px;
+  overflow: hidden;
+}
+
+.learning-panel .panel-heading {
+  margin-bottom: 8px;
+}
+
+.learning-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(142px, 1fr);
+  grid-template-columns: none;
+  gap: 6px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.learning-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.learning-card.learning-skill-card {
+  display: grid;
+  grid-template-columns: 31px minmax(0, 1fr) auto;
+  grid-template-rows: auto 4px;
+  align-items: center;
+  column-gap: 7px;
+  row-gap: 7px;
+  min-width: 0;
+  min-height: 61px;
+  padding: 7px 8px;
+  scroll-snap-align: start;
+}
+
+.learning-skill-icon {
+  display: grid;
+  place-items: center;
+  grid-row: 1;
+  grid-column: 1;
+  width: 31px;
+  height: 31px;
+  border: 1px solid rgba(24, 221, 235, 0.22);
+  border-radius: 8px;
+  color: var(--cyan);
+  background: rgba(24, 221, 235, 0.08);
+}
+
+.learning-skill-icon .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.learning-skill-copy {
+  grid-row: 1;
+  grid-column: 2;
+  min-width: 0;
+}
+
+.learning-skill-copy small {
+  display: block;
+  color: var(--muted);
+  font-size: 7px;
+  line-height: 1.1;
+}
+
+.learning-skill-copy strong {
+  display: block;
+  margin-top: 3px;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 9px;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.learning-card.learning-skill-card .learning-percent {
+  grid-row: 1;
+  grid-column: 3;
+  align-self: end;
+  color: var(--cyan);
+  font-size: 8px;
+}
+
+.learning-card.learning-skill-card .learning-meter {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  height: 4px;
+  margin: 0;
+}
+
+/* Do not show the old card-detail structure if stale markup
+   is temporarily present during hot reload. */
+.learning-skill-card > p,
+.learning-skill-card > .technologies,
+.learning-skill-card > h3 {
+  display: none;
+}
+
+@media (min-width: 1251px) {
+  .hero {
+    grid-template-columns:
+      minmax(0, 1.05fr)
+      minmax(0, 0.9fr)
+      minmax(0, 1.05fr);
+  }
+}
+
+@media (max-width: 1250px) and (min-width: 1051px) {
+  .hero {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.82fr)
+      minmax(0, 1fr);
+  }
+
+  .hero-art {
+    max-width: 420px;
+    transform: translateX(-3%);
+  }
+
+  .learning-grid {
+    grid-auto-columns: minmax(150px, 0.5fr);
+  }
+}
+
+@media (max-width: 1050px) {
+  .hero-art {
+    max-width: 440px;
+    transform: none;
+  }
+
+  .hero-art img {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .learning-grid {
+    grid-auto-columns: minmax(150px, 42%);
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-copy > p:not(.eyebrow) {
+    max-width: none;
+  }
+
+  .learning-grid {
+    grid-auto-columns: minmax(155px, 78%);
+  }
+}
+/* =========================================================
+   HERO FINAL FIDELITY
+   Arte TryzUp completo, sin crop ni escalado artificial
+   ========================================================= */
+
+.hero {
+  grid-template-columns:
+    minmax(420px, 1.05fr)
+    minmax(320px, 0.9fr)
+    minmax(390px, 1.05fr);
+
+  column-gap: 18px;
+  align-items: center;
+}
+
+.hero-copy {
+  min-width: 0;
+  max-width: 540px;
+}
+
+.hero-copy > p:not(.eyebrow) {
+  max-width: 455px;
+  line-height: 1.5;
+}
+
+/* Columna central */
+.hero-art {
+  width: 100%;
+  max-width: 440px;
+  height: 285px;
+
+  justify-self: center;
+  align-self: center;
+
+  overflow: visible;
+
+  transform: none !important;
+
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+
+  opacity: 1;
+}
+
+/* Imagen oficial completa */
+.hero-art img {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  transform: none !important;
+
+  filter: drop-shadow(0 24px 28px rgba(24, 221, 235, 0.12));
+}
+
+/* Bloque de métricas */
+.stats-grid {
+  width: 100%;
+  min-width: 0;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+
+  justify-self: stretch;
+  align-self: stretch;
+
+  position: relative;
+  z-index: 3;
+}
+
+.stat-card {
+  min-height: 118px !important;
+}
+
+/* Desktop grande */
+@media (min-width: 1400px) {
+  .hero-art {
+    max-width: 465px;
+    height: 295px;
+  }
+}
+
+/* Desktop más estrecho */
+@media (max-width: 1250px) and (min-width: 1051px) {
+  .hero {
+    grid-template-columns:
+      minmax(360px, 1fr)
+      minmax(280px, 0.82fr)
+      minmax(330px, 1fr);
+  }
+
+  .hero-art {
+    max-width: 390px;
+    height: 265px;
+  }
+}
+
+/* =========================================================
+   HERO ART — POSICIÓN FINAL
+   ========================================================= */
+
+.hero {
+  grid-template-columns:
+    minmax(420px, 1.08fr)
+    minmax(300px, 0.72fr)
+    minmax(390px, 1fr);
+
+  column-gap: 20px;
+}
+
+/* Zona exclusiva del arte */
+.hero-art {
+  width: 100%;
+  max-width: 385px;
+  height: 285px;
+
+  justify-self: end;
+  align-self: center;
+
+  overflow: visible;
+
+  transform: translateX(-155px) !important;
+
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+/* Imagen completa, sin crop */
+.hero-art img {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  transform: none !important;
+}
+
+/* Las métricas conservan su propia columna */
+.stats-grid {
+  position: relative;
+  z-index: 3;
+
+  width: 100%;
+  min-width: 0;
+
+  justify-self: stretch;
+}
+
+/* =========================================================
+   HERO ART — GLOW VINCULADO A LA IMAGEN
+   ========================================================= */
+
+/* Quitamos el brillo anterior independiente */
+.hero-art::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 2px;
+
+  width: 34%;
+  height: 9px;
+
+  transform: translateX(105%);
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(205, 253, 255, 0.95) 0%,
+    rgba(51, 230, 246, 0.75) 30%,
+    rgba(18, 190, 221, 0.22) 62%,
+    transparent 78%
+  );
+
+  filter: blur(3px);
+
+  opacity: 0.95;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+/* El arte se convierte en el contenedor del brillo */
+.hero-art {
+  position: relative;
+
+  transform: translateX(-155px) !important;
+
+  overflow: visible !important;
+
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+}
+
+/* Imagen por encima del brillo */
+.hero-art img {
+  position: relative;
+  z-index: 2;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  transform: none !important;
+}
+
+/* Brillo inferior que VIAJA con el logo */
+/* =========================================================
+   HERO GLOW — FIDELIDAD FINAL
+   ========================================================= */
+
+.hero-art::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -4px;
+
+  width: 62%;
+  height: 30px;
+
+  transform: translateX(35%);
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(120, 245, 255, 0.95) 0%,
+    rgba(36, 224, 244, 0.8) 10%,
+    rgba(14, 192, 224, 0.48) 25%,
+    rgba(0, 151, 190, 0.2) 45%,
+    transparent 70%
+  );
+
+  filter: blur(7px);
+
+  opacity: 1;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
