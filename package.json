@@ -1,11 +1,8 @@
 {
   "name": "tryzup-project-hub",
-  "version": "1.0.0",
+  "version": "0.1.2",
+  "private": true,
   "description": "Modular Project Control Dashboard & Living Portfolio for the TryzUp ecosystem.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -14,13 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/TryzUp-Nexus/tryzup-project-hub.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TryzUp-Nexus/tryzup-project-hub/issues"
-  },
-  "homepage": "https://github.com/TryzUp-Nexus/tryzup-project-hub#readme",
+  "homepage": "https://tryzup-nexus.github.io/tryzup-project-hub/",
   "devDependencies": {
     "prettier": "^3.9.6"
   }
