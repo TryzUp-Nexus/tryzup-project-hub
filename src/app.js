@@ -1,16 +1,20 @@
 import { getProjects, getLearning, calculateStats } from "./services/projectService.js";
 import { SummaryTile } from "./components/summary-tile.js";
 import { ProjectCard } from "./components/project-card.js";
+import { ProjectVisual } from "./components/project-visuals.js";
 import { FilterBar } from "./components/filter-bar.js";
+import { mountIcons } from "./components/icons.js";
 import { DEFAULT_FILTERS, filterProjects } from "./utils/filters.js";
 import { formatDate, sortByDateDescending } from "./utils/dates.js";
 
 const byId = (id) => document.getElementById(id);
+
 const escapeHtml = (value = "") =>
   String(value).replace(
     /[&<>'"]/g,
     (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]
   );
+
 const roadmap = [
   "Fundación y repositorio",
   "Modelo de datos projects.json",
@@ -30,15 +34,22 @@ const roadmap = [
 
 function renderStats(projects, learning) {
   const stats = calculateStats(projects, learning);
+
   byId("stats").innerHTML = [
-    SummaryTile("Proyectos activos", stats.active, `${projects.length} registrados`),
-    SummaryTile("En desarrollo", stats.development, "Estado actual"),
+    SummaryTile("Proyectos activos", stats.active, `${projects.length} registrados`, "folder"),
+    SummaryTile("En desarrollo", stats.development, "Estado actual", "code"),
     SummaryTile(
       "Avance global",
       stats.average === null ? null : `${stats.average}%`,
-      "Solo proyectos medidos"
+      "Solo proyectos medidos",
+      "progress"
     ),
-    SummaryTile("Aprendizajes aplicados", stats.appliedLearning, `${learning.length} evidencias`),
+    SummaryTile(
+      "Aprendizajes aplicados",
+      stats.appliedLearning,
+      `${learning.length} evidencias`,
+      "graduation"
+    ),
   ].join("");
 }
 
@@ -74,17 +85,77 @@ function renderActivity(projects) {
   byId("activity").innerHTML = sortByDateDescending(projects)
     .slice(0, 5)
     .map(
-      (project) =>
-        `<article><span class="activity-icon" aria-hidden="true">↗</span><div><strong>${escapeHtml(project.name)}</strong><p>${escapeHtml(project.lastAchievement)}</p></div><time datetime="${project.lastUpdate}">${formatDate(project.lastUpdate)}</time></article>`
+      (project) => `
+        <article>
+          ${ProjectVisual(project, "activity")}
+          <div>
+            <strong>${escapeHtml(project.name)}</strong>
+            <p>${escapeHtml(project.lastAchievement)}</p>
+          </div>
+          <time datetime="${project.lastUpdate}">${formatDate(project.lastUpdate)}</time>
+        </article>
+      `
     )
     .join("");
 }
 
+function getLearningIcon(technology) {
+  const key = String(technology).toLowerCase();
+
+  if (["html5", "css3", "javascript"].includes(key)) {
+    return "code";
+  }
+
+  if (["git", "github"].includes(key)) {
+    return "link";
+  }
+
+  if (key === "ci/cd") {
+    return "activity";
+  }
+
+  return "resources";
+}
+
 function renderLearning(records) {
-  byId("learning-grid").innerHTML = records
+  const skills = records.flatMap((record) =>
+    (record.technologies || []).map((technology) => ({
+      technology,
+      area: record.area,
+      progress: record.progress,
+      source: record.title,
+    }))
+  );
+
+  byId("learning-grid").innerHTML = skills
     .map(
-      (record) =>
-        `<article class="learning-card"><div><span class="category">${escapeHtml(record.area)}</span><strong class="learning-percent">${record.progress}%</strong></div><h3>${escapeHtml(record.title)}</h3><p>${escapeHtml(record.evidence)}</p><div class="technologies">${record.technologies.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div><div class="learning-meter" role="progressbar" aria-label="Progreso de ${escapeHtml(record.title)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${record.progress}"><span style="width:${record.progress}%"></span></div></article>`
+      (skill) => `
+        <article class="learning-card learning-skill-card" title="${escapeHtml(skill.source)}">
+          <span
+            class="learning-skill-icon"
+            data-icon="${getLearningIcon(skill.technology)}"
+            aria-hidden="true"
+          ></span>
+
+          <div class="learning-skill-copy">
+            <small>${escapeHtml(skill.area)}</small>
+            <strong>${escapeHtml(skill.technology)}</strong>
+          </div>
+
+          <strong class="learning-percent">${skill.progress}%</strong>
+
+          <div
+            class="learning-meter"
+            role="progressbar"
+            aria-label="Progreso de ${escapeHtml(skill.technology)}"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="${skill.progress}"
+          >
+            <span style="width:${skill.progress}%"></span>
+          </div>
+        </article>
+      `
     )
     .join("");
 }
@@ -92,10 +163,12 @@ function renderLearning(records) {
 function setupNavigation() {
   const toggle = byId("menu-toggle");
   const sidebar = byId("sidebar");
+
   toggle.addEventListener("click", () => {
     const open = sidebar.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(open));
   });
+
   sidebar.querySelectorAll("a").forEach((link) =>
     link.addEventListener("click", () => {
       sidebar.classList.remove("is-open");
@@ -106,18 +179,26 @@ function setupNavigation() {
 
 async function init() {
   setupNavigation();
+
   try {
     const [projects, learning] = await Promise.all([getProjects(), getLearning()]);
+
     renderStats(projects, learning);
     renderProjects(projects);
     renderRoadmap();
     renderActivity(projects);
     renderLearning(learning);
+
     byId("filters").innerHTML = FilterBar(projects);
+
+    mountIcons();
+
     const form = byId("filter-form");
+
     const applyFilters = () => {
       const values = Object.fromEntries(new FormData(form));
       const filtered = filterProjects(projects, values);
+
       const sorted = [...filtered].sort((a, b) =>
         values.sort === "name"
           ? a.name.localeCompare(b.name, "es")
@@ -125,8 +206,10 @@ async function init() {
             ? (b.progress ?? -1) - (a.progress ?? -1)
             : new Date(b.lastUpdate) - new Date(a.lastUpdate)
       );
+
       renderProjects(sorted);
     };
+
     form.addEventListener("input", applyFilters);
     form.addEventListener("change", applyFilters);
     form.addEventListener("reset", () =>
