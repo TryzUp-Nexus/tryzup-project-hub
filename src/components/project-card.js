@@ -1,5 +1,5 @@
-import { ProgressBar } from "./ProgressBar.js";
-import { StatusBadge } from "./StatusBadge.js";
+import { ProgressBar } from "./progress-bar.js";
+import { StatusBadge } from "./status-badge.js";
 import { formatDate } from "../utils/dates.js";
 
 const escapeHtml = (value = "") => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[char]);

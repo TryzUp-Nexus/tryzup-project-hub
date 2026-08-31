@@ -1,7 +1,7 @@
 import { getProjects, getLearning, calculateStats } from "./services/projectService.js";
-import { SummaryTile } from "./components/SummaryTile.js";
-import { ProjectCard } from "./components/ProjectCard.js";
-import { FilterBar } from "./components/FilterBar.js";
+import { SummaryTile } from "./components/summary-tile.js";
+import { ProjectCard } from "./components/project-card.js";
+import { FilterBar } from "./components/filter-bar.js";
 import { DEFAULT_FILTERS, filterProjects } from "./utils/filters.js";
 import { formatDate, sortByDateDescending } from "./utils/dates.js";
 
