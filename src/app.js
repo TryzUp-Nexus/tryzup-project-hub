@@ -163,18 +163,40 @@ function renderLearning(records) {
 function setupNavigation() {
   const toggle = byId("menu-toggle");
   const sidebar = byId("sidebar");
+  const backdrop = byId("sidebar-backdrop");
+  const mobileQuery = window.matchMedia("(max-width: 1050px)");
+
+  const setMenuState = (open) => {
+    sidebar.classList.toggle("is-open", open);
+    backdrop?.classList.toggle("is-visible", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("nav-open", open && mobileQuery.matches);
+  };
+
+  const closeMenu = () => setMenuState(false);
 
   toggle.addEventListener("click", () => {
-    const open = sidebar.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
+    setMenuState(!sidebar.classList.contains("is-open"));
   });
 
-  sidebar.querySelectorAll("a").forEach((link) =>
+  backdrop?.addEventListener("click", closeMenu);
+
+  sidebar.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      sidebar.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    })
-  );
+      if (mobileQuery.matches) closeMenu();
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && sidebar.classList.contains("is-open")) {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+
+  mobileQuery.addEventListener("change", (event) => {
+    if (!event.matches) closeMenu();
+  });
 }
 
 async function init() {

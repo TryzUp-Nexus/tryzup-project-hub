@@ -1,0 +1,254 @@
+/*
+ * TryzUp Project Hub
+ * Responsive Fidelity Pass 2
+ *
+ * Final responsive polish after the main visual fidelity pass.
+ * Loaded after styles.css and brand-icons.css.
+ */
+
+/* ==========================================================
+   INTERNAL SCROLLBARS
+   ========================================================== */
+
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(86, 111, 126, 0.55) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(86, 111, 126, 0.5);
+  border-radius: 999px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(103, 135, 151, 0.7);
+}
+
+/* ==========================================================
+   COMPACT DESKTOP / 1280px HERO
+   Keep the official TryzUp artwork visible before tablet mode.
+   ========================================================== */
+
+/* =========================================
+   COMPACT DESKTOP / 1180px–1350px
+   Hero fidelity alignment
+   ========================================= */
+
+@media (min-width: 1180px) and (max-width: 1350px) {
+  .hero {
+    grid-template-columns:
+      minmax(330px, 1.05fr)
+      minmax(250px, 0.72fr)
+      minmax(290px, 0.86fr);
+
+    grid-template-rows: auto;
+    gap: 12px;
+    align-items: center;
+  }
+
+  /* Texto */
+  .hero-copy {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    min-width: 0;
+  }
+
+  /* Artwork */
+  .hero-art {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: block !important;
+    width: 100%;
+    max-width: 310px;
+    height: 255px;
+
+    justify-self: center;
+    align-self: center;
+
+    overflow: visible;
+  }
+
+  /* Métricas */
+  .stats-grid {
+    grid-column: 3;
+    grid-row: 1;
+
+    width: 100%;
+    min-width: 0;
+    align-self: center;
+  }
+}
+/* ==========================================================
+   TABLET / LEARNING CAROUSEL
+   ========================================================== */
+
+@media (max-width: 760px) {
+  .learning-grid {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(155px, 46%);
+    gap: 8px;
+
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 2px;
+
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .learning-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .learning-card {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+}
+
+/* ==========================================================
+   MOBILE FILTERS
+   Remove native horizontal scrollbar from project tabs.
+   ========================================================== */
+
+@media (max-width: 430px) {
+  .filter-bar {
+    min-width: 0;
+  }
+
+  .status-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    width: 100%;
+    max-width: 100%;
+
+    overflow: visible;
+  }
+
+  .status-tabs label {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .status-tabs span {
+    width: 100%;
+    padding: 7px 6px;
+
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .search-field {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .search-field input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .learning-grid {
+    grid-auto-columns: minmax(145px, 78%);
+  }
+}
+
+/* ==========================================================
+   VERY SMALL MOBILE — 320 / 333px
+   ========================================================== */
+
+@media (max-width: 340px) {
+  .topbar {
+    height: 64px;
+    padding-inline: 10px;
+    gap: 7px;
+  }
+
+  .topbar-brand {
+    min-width: 0;
+    gap: 7px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .topbar-brand .brand-copy strong {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: 0.045em;
+  }
+
+  .topbar-brand .brand-copy small {
+    margin-top: 3px;
+    font-size: 6.5px;
+    letter-spacing: 0.13em;
+    white-space: nowrap;
+  }
+
+  .user-avatar {
+    width: 37px;
+    height: 37px;
+  }
+
+  .menu-toggle {
+    width: 37px;
+    height: 37px;
+    padding: 0;
+  }
+
+  .hero {
+    padding-inline: 12px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 10vw, 2rem);
+  }
+
+  .hero h2 {
+    font-size: clamp(1.16rem, 7vw, 1.35rem);
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .status-tabs {
+    gap: 6px;
+  }
+
+  .status-tabs span {
+    padding-inline: 4px;
+    font-size: 9px;
+  }
+
+  .learning-grid {
+    grid-auto-columns: minmax(145px, 86%);
+  }
+}
