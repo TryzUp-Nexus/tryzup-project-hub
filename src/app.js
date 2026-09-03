@@ -99,6 +99,22 @@ function renderActivity(projects) {
     .join("");
 }
 
+const LEARNING_BRAND_ASSETS = Object.freeze({
+  html5: "./assets/img/learning/html5.svg",
+  css3: "./assets/img/learning/css3.svg",
+  javascript: "./assets/img/learning/javascript.svg",
+  git: "./assets/img/learning/git.svg",
+  github: "./assets/img/learning/github.svg",
+  "ci/cd": "./assets/img/learning/github-actions.svg",
+  json: "./assets/img/learning/json.svg",
+});
+
+function getLearningBrand(technology) {
+  const key = String(technology).trim().toLowerCase();
+
+  return LEARNING_BRAND_ASSETS[key] ?? null;
+}
+
 function getLearningIcon(technology) {
   const key = String(technology).toLowerCase();
 
@@ -128,14 +144,40 @@ function renderLearning(records) {
   );
 
   byId("learning-grid").innerHTML = skills
-    .map(
-      (skill) => `
-        <article class="learning-card learning-skill-card" title="${escapeHtml(skill.source)}">
+    .map((skill) => {
+      const brandSrc = getLearningBrand(skill.technology);
+
+      const visual = brandSrc
+        ? `
           <span
-            class="learning-skill-icon"
+            class="learning-skill-icon learning-brand-icon learning-brand-${String(skill.technology)
+              .trim()
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")}"
+            aria-hidden="true"
+          >
+            <img
+              src="${brandSrc}"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+        `
+        : `
+          <span
+            class="learning-skill-icon learning-fallback-icon"
             data-icon="${getLearningIcon(skill.technology)}"
             aria-hidden="true"
           ></span>
+        `;
+
+      return `
+        <article
+          class="learning-card learning-skill-card"
+          title="${escapeHtml(skill.source)}"
+        >
+          ${visual}
 
           <div class="learning-skill-copy">
             <small>${escapeHtml(skill.area)}</small>
@@ -155,8 +197,8 @@ function renderLearning(records) {
             <span style="width:${skill.progress}%"></span>
           </div>
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
