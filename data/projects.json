@@ -1,21 +1,38 @@
 [
   {
     "id": "project-hub",
+    "slug": "tryzup-project-hub",
     "name": "TryzUp Project Hub",
     "description": "Panel modular de control y portafolio vivo para todo el ecosistema TryzUp.",
     "category": "Producto",
+    "type": "product",
     "status": "development",
     "priority": "high",
-    "progress": 35,
-    "phase": "Foundation v0.1.0",
+    "progress": {
+      "value": 35,
+      "measurable": true
+    },
+    "phase": {
+      "name": "Foundation v0.1.0",
+      "code": "foundation-v0-1-0"
+    },
     "visibility": "public",
-    "repository": "https://github.com/TryzUp-Nexus/tryzup-project-hub",
-    "demo": "https://tryzup-nexus.github.io/tryzup-project-hub/",
-    "lastUpdate": "2026-08-31",
+    "dates": {
+      "lastUpdate": "2026-08-31",
+      "target": "2026-09-30"
+    },
+    "links": {
+      "repository": "https://github.com/TryzUp-Nexus/tryzup-project-hub",
+      "demo": "https://tryzup-nexus.github.io/tryzup-project-hub/"
+    },
+    "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Actions"],
+    "learningRefs": [],
     "lastAchievement": "Arquitectura modular y despliegue automático preparados",
     "nextAction": "Definir el contrato profesional de projects.json",
-    "targetDate": "2026-09-30",
-    "technologies": ["HTML5", "CSS3", "JavaScript", "GitHub Actions"]
+    "github": {
+      "owner": "TryzUp-Nexus",
+      "repository": "tryzup-project-hub"
+    }
   },
   {
     "id": "tryzup",
