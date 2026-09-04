@@ -5,7 +5,8 @@
   "description": "Modular Project Control Dashboard & Living Portfolio for the TryzUp ecosystem.",
   "scripts": {
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate:data": "node scripts/validate-projects.mjs"
   },
   "repository": {
     "type": "git",
@@ -13,6 +14,8 @@
   },
   "homepage": "https://tryzup-nexus.github.io/tryzup-project-hub/",
   "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "prettier": "^3.9.6"
   }
 }

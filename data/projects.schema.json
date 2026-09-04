@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tryzup.dev/schemas/projects.schema.json",
+  "title": "TryzUp Project Hub — Projects Data Contract",
+  "description": "Contrato de datos para los proyectos públicos administrados por TryzUp Project Hub.",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/project"
+  },
+  "$defs": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slug",
+        "name",
+        "description",
+        "category",
+        "type",
+        "status",
+        "priority",
+        "progress",
+        "phase",
+        "visibility",
+        "dates",
+        "links",
+        "technologies",
+        "learningRefs",
+        "lastAchievement",
+        "nextAction"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+
+        "slug": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "type": {
+          "type": "string",
+          "enum": ["product", "software", "client", "portfolio", "learning", "internal", "other"]
+        },
+
+        "status": {
+          "type": "string",
+          "enum": [
+            "planning",
+            "research",
+            "design",
+            "development",
+            "active",
+            "paused",
+            "completed",
+            "archived"
+          ]
+        },
+
+        "priority": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+
+        "progress": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "measurable"],
+          "properties": {
+            "value": {
+              "type": ["number", "null"],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "measurable": {
+              "type": "boolean"
+            }
+          }
+        },
+
+        "phase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "code"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            }
+          }
+        },
+
+        "visibility": {
+          "type": "string",
+          "enum": ["public"]
+        },
+
+        "dates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["lastUpdate", "target"],
+          "properties": {
+            "lastUpdate": {
+              "type": "string",
+              "format": "date"
+            },
+            "target": {
+              "type": ["string", "null"],
+              "format": "date"
+            }
+          }
+        },
+
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "demo"],
+          "properties": {
+            "repository": {
+              "type": ["string", "null"],
+              "format": "uri"
+            },
+            "demo": {
+              "type": ["string", "null"],
+              "format": "uri"
+            }
+          }
+        },
+
+        "technologies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+
+        "learningRefs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+
+        "lastAchievement": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "nextAction": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "github": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["owner", "repository"],
+              "properties": {
+                "owner": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "repository": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
