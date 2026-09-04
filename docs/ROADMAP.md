@@ -12,7 +12,7 @@ Cada fase debe dejar evidencia visible en el repositorio, el producto y el porta
 
 **Versión pública:** `v0.1.2`  
 **Estado de `main`:** incluye mejoras posteriores a `v0.1.2` pendientes de agrupar en una próxima release.  
-**Etapa actual:** fundación visual, responsive y arquitectónica consolidada.  
+**Etapa actual:** fundación visual, responsive y arquitectónica consolidada.
 **Siguiente fase principal:** FASE 02 — contrato profesional de `projects.json`.
 
 La interfaz principal, la arquitectura frontend inicial, el despliegue automático, la navegación responsive y la identidad visual ya cuentan con una base estable.
