@@ -28,10 +28,7 @@ function printValidationErrors(errors = []) {
 
 async function validateProjects() {
   try {
-    const [projects, schema] = await Promise.all([
-      readJson(PROJECTS_PATH),
-      readJson(SCHEMA_PATH),
-    ]);
+    const [projects, schema] = await Promise.all([readJson(PROJECTS_PATH), readJson(SCHEMA_PATH)]);
 
     const ajv = new Ajv2020({
       allErrors: true,
